@@ -1,0 +1,3 @@
+export const CHANGE_KEYWORD = 'CHANGE_KEYWORD'
+export const FETCH_RESULT = 'FETCH_RESULT'
+export const CLEAR_RESULT = 'CLEAR_RESULT'
