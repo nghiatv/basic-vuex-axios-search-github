@@ -39,7 +39,6 @@ export const store = new Vuex.Store({
       })
       .then(response => {
         console.log(response.data)
-
         state.result = response.data.items
       })
     },
@@ -53,6 +52,9 @@ export const store = new Vuex.Store({
     },
     FETCH_RESULT: ({commit}) => {
       commit('FETCH_RESULT')
+    },
+    CLEAR_RESULT: ({commit}) => {
+      commit('CLEAR_RESULT')
     }
   }
 })

@@ -47,8 +47,8 @@ export default {
       return this.$store.state.loading
     },
     emptyItems () {
-      // console.log(this.$store.state)
-      return this.$store.state.result === [] && this.$store.state.keyword
+      // console.log(this.$store.state.result)
+      return this.$store.state.result === [] && this.$store.state.keyword && this.$store.state.loading
     },
     keyword() {
       return this.$store.state.keyword
@@ -56,10 +56,17 @@ export default {
   },
   methods: {
      update: _.debounce(function (e) {
+       // chay action de thay doi keyword
       this.$store.dispatch('CHANGE_KEYWORD',{
         value : e.target.value
       }).then(() => {
-        this.$store.dispatch('FETCH_RESULT')
+        if(this.$store.state.keyword == ''){
+          // neu keyword la trong thi clear cai result
+          this.$store.dispatch('CLEAR_RESULT')
+        }else{
+          // neu co thi set result moi
+          this.$store.dispatch('FETCH_RESULT')
+        }
       })
     }, 300),
   }
